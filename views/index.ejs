@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    
+    <main id="foro" class="container">
+
+        <div class="red">
+        <%= locals.error ? error : '' %>
+        </div>
+
+        <ul class="parent-posts">
+
+            <li>
+                <div class="post-for-input" id="input-0">
+                    <form action="/" method="post">
+                        <input type="hidden" name="id" value="input-0">
+                        <div>
+                            <label for="name">Nombre</label>
+                            <input id="name" name="name" type="text">
+                        </div>
+                        <div class="post-message">
+                            <label for="message">Mensaje:</label>
+                            <textarea id="message" name="message" id="" rows="10"></textarea>
+                        </div>
+                        <div>
+                            <button>Publicar mensaje</button>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+            <li>
+
+                <% for(var i = 0; i < messages.length; i ++) { %>
+
+                    <div class="post" id="post-<%= messages[i].id %>">
+                        <div>
+                            <h2>Nombre:</h2>&nbsp;<h2><%= messages[i].name %></h2>
+                        </div>
+                        <div>
+                            <h2>Mensaje:</h2>&nbsp;<h2><%= messages[i].message %></h2>
+                        </div>
+                    </div>
+
+                    <% if (messages[i]) { %>
+                    <ul class="children-posts">
+                    <% } %>
+
+                        <% for (var j = 0; j < messages[i].comments.length; j++ ) { %>
+
+                            <li>
+                                <div class="post" id="post-<%= messages[i].id %>-<%= messages[i].comments[j].id %>">
+                                    <div>
+                                        <h2>Nombre:</h2>&nbsp;<h2><%= messages[i].comments[j].name %></h2>
+                                    </div>
+                                    <div>
+                                        <h2>Mensaje:</h2>&nbsp;<h2><%= messages[i].comments[j].message %></h2>
+                                    </div>
+                                </div>
+                
+                            </li>
+
+                        <% } %>
+    
+                        <% if (messages[i]) { %>
+
+                        <li>
+                            <div class="post-for-input" id="input-<%= messages[i].id %>">
+                                <form action="/" method="post">
+                                    <input type="hidden" name="id" value="input-<%= messages[i].id %>">
+                                    <div>
+                                        <label for="name">Nombre</label>
+                                        <input id="name" name="name" type="text">
+                                    </div>
+                                    <div class="post-message">
+                                        <label for="message">Mensaje:</label>
+                                        <textarea id="message" name="message" id="" rows="10"></textarea>
+                                    </div>
+                                    <div>
+                                        <button>Publicar mensaje</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <% } %>
+    
+                    <% if (messages[i]) { %>
+                    </ul>
+                    <% } %>
+
+                <% } %>
+
+            </li>
+
+        </ul>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+ul li {
+    list-style-type: none;
+}
+
+.post-message > textarea {
+    display: block;
+    margin-top: 5px;
+    width: 95%;
+}
+
+.post-for-input form > div:last-child {
+    text-align: end;
+}
+
+.post-for-input form > div:last-child button {
+    margin-right: 4.4%;
+}
+
+.post-for-input form > * {
+    margin-top: 10px;
+}
+
+#foro {
+    width: 1300px;
+}
+
+.post div h2 {
+    display: inline-block;
+    font-weight: normal;
+}
+
+.red {
+    color: red;
+}
